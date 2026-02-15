@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = '/api';
+const API_BASE_URL = 'https://server-production-b58e.up.railway.app/';
 
 export const priceService = {
   async getPrices(symbols) {
