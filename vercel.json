@@ -1,0 +1,18 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "client/dist",
+  "installCommand": "npm install",
+  "env": {
+    "VITE_API_URL": "@crypto-exchange-api-url"
+  },
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "destination": "https://crypto-exchange-api.vercel.app/api/$1"
+    },
+    {
+      "src": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

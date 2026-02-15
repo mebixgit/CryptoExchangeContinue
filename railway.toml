@@ -1,0 +1,15 @@
+name: crypto-exchange
+services:
+  - name: api-server
+    plan: starter
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    envs:
+      - name: NODE_ENV
+        value: production
+      - name: PORT
+        value: "3001"
+
+deploy:
+  - service: api-server
+    branch: main
