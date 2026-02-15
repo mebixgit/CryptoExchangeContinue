@@ -3,6 +3,8 @@ import { priceService } from '../services/api';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { formatPrice, getCryptoIcon } from '../utils/formatters';
 
+const AMOUNT_INPUT_STEP = 0.000001; // Precision for crypto amounts
+
 const Exchange = () => {
   const [fromCurrency, setFromCurrency] = useState('BTC');
   const [toCurrency, setToCurrency] = useState('ETH');
@@ -75,7 +77,7 @@ const Exchange = () => {
                 onChange={(e) => setAmount(e.target.value)}
                 placeholder="Amount"
                 min="0"
-                step="0.000001"
+                step={AMOUNT_INPUT_STEP}
                 className="flex-1 px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
               />
             </div>

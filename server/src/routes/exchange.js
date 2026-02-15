@@ -6,6 +6,9 @@ import kraken from '../providers/kraken.js';
 const router = express.Router();
 const providers = [binance, coinbase, kraken];
 
+// Estimated fee percentage for exchange calculations
+const ESTIMATED_FEE_RATE = 0.001; // 0.1%
+
 // GET /api/exchange/quote - Get exchange quotes from all providers
 router.get('/quote', async (req, res) => {
   try {
@@ -46,7 +49,7 @@ router.get('/quote', async (req, res) => {
         // Calculate exchange rate
         const exchangeRate = fromPrice.price / toPrice.price;
         const outputAmount = amountNum * exchangeRate;
-        const estimatedFee = outputAmount * 0.001; // Assume 0.1% fee
+        const estimatedFee = outputAmount * ESTIMATED_FEE_RATE;
         const finalAmount = outputAmount - estimatedFee;
 
         quotes.push({

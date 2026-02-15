@@ -31,7 +31,7 @@ export const usePrices = (symbols, refreshInterval = 30000) => {
     return () => {
       if (intervalId) clearInterval(intervalId);
     };
-  }, [symbols, refreshInterval]);
+  }, [JSON.stringify(symbols), refreshInterval]);
 
   return { data, loading, error };
 };
